@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6229468390398171697}
   - component: {fileID: 2565865927514221128}
   - component: {fileID: 2655227786051989922}
-  - component: {fileID: 346108154740286579}
   - component: {fileID: 2234485116478399292}
   - component: {fileID: 1138937476429969071}
   m_Layer: 0
@@ -111,27 +110,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &346108154740286579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492870044402508128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0756fc5a86a61cb963cf8524fa293f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 3
-  runSpeed: 6
-  crouchSpeed: 1.5
-  lookSpeedX: 2
-  lookSpeedY: 2
-  upperLookLimit: -60
-  lowerLookLimit: 60
-  crouchKey: 306
-  sprintKey: 304
 --- !u!143 &2234485116478399292
 CharacterController:
   m_ObjectHideFlags: 0
