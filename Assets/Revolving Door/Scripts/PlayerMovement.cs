@@ -1,48 +1,55 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody playerRigidbody;
-    public float playerMovingSpeed = 10f;
-    public float strafeSpeed = 5f;
-    private float moving;
-    private float strafe;
-    public GameObject cam;
-    private float xRot = 0.0f;
-    private float yRot = 0.0f;
-    public float horizontalSensitivity = 2.0f;
-    public float verticalSensitivity = 2.0f;
-    public float rotationLimit;
-    private float runSpeed = 1;
-    public float runMultiplier = 2;
+    public float moveSpeed = 5f;          // Movement speed
+    public float lookSpeedX = 2f;         // Mouse look sensitivity (X axis)
+    public float lookSpeedY = 2f;         // Mouse look sensitivity (Y axis)
+    public Transform playerCamera;        // The player's camera
+    public float gravity = -9.8f;         // Gravity
+
+    private CharacterController characterController;
+    private float rotationX = 0f;         // Rotation on X (for looking up/down)
 
     void Start()
     {
-        playerRigidbody = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;  // Lock the cursor to the center of the screen
+        Cursor.visible = false;                   // Make the cursor invisible
     }
 
     void Update()
     {
-        yRot = Input.GetAxis("Mouse X") * horizontalSensitivity;
-        xRot += Input.GetAxis("Mouse Y") * verticalSensitivity;
+        // Handle movement
+        float moveX = Input.GetAxis("Horizontal");  // A/D or Left/Right arrow
+        float moveZ = Input.GetAxis("Vertical");    // W/S or Up/Down arrow
 
-        // xRot = Mathf.Clamp(xRot, -rotationLimit, rotationLimit);
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        characterController.Move(move * moveSpeed * Time.deltaTime);
 
-        // cam.transform.localEulerAngles = new Vector3(-xRot, 0, 0);
+        // Handle camera rotation
+        float mouseX = Input.GetAxis("Mouse X") * lookSpeedX;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSpeedY;
 
-        // transform.Rotate(0, yRot, 0);
+        rotationX -= mouseY; // Look up and down
+        rotationX = Mathf.Clamp(rotationX, -80f, 80f); // Limit vertical rotation
 
-        moving = Input.GetAxis("Vertical") * -playerMovingSpeed;
-        strafe = Input.GetAxis("Horizontal") * -strafeSpeed;
+        playerCamera.localRotation = Quaternion.Euler(rotationX, 0f, 0f); // Rotate camera (up/down)
+        transform.Rotate(Vector3.up * mouseX); // Rotate player (left/right)
 
-        runSpeed = 1.0f;
-        if (Input.GetKey(KeyCode.LeftShift))
-            runSpeed = runMultiplier;
-    }
-
-    void FixedUpdate()
-    {
-        playerRigidbody.AddRelativeForce(-strafe * runSpeed, 0, -moving * runSpeed);
-        // playerRigidbody.velocity = Vector3.ClampMagnitude(playerRigidbody.velocity, 2 * runSpeed);
+        // Apply gravity
+        if (characterController.isGrounded)
+        {
+            Vector3 velocity = new Vector3(0, gravity, 0);  // Apply gravity only when grounded
+            characterController.Move(velocity * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 velocity = new Vector3(0, gravity, 0);
+            characterController.Move(velocity * Time.deltaTime);
+        }
     }
 }
+
