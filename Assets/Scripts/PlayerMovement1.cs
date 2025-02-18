@@ -85,7 +85,7 @@ public class FirstPersonController : MonoBehaviour
 
         // Adjust camera's vertical rotation (look up and down)
         rotationX -= mouseY * lookSpeedY;
-        // rotationX = Mathf.Clamp(rotationX, lowerLookLimit, upperLookLimit); // Clamp to prevent full rotation
+        rotationX = Mathf.Clamp(rotationX, upperLookLimit, lowerLookLimit); // Clamp to prevent full rotation
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
     }
 }

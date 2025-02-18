@@ -26,11 +26,11 @@ public class PlayerMovement : MonoBehaviour
         yRot = Input.GetAxis("Mouse X") * horizontalSensitivity;
         xRot += Input.GetAxis("Mouse Y") * verticalSensitivity;
 
-        // xRot = Mathf.Clamp(xRot, -rotationLimit, rotationLimit);
+        xRot = Mathf.Clamp(xRot, -rotationLimit, rotationLimit);
 
-        // cam.transform.localEulerAngles = new Vector3(-xRot, 0, 0);
+        cam.transform.localEulerAngles = new Vector3(-xRot, 0, 0);
 
-        // transform.Rotate(0, yRot, 0);
+        transform.Rotate(0, yRot, 0);
 
         moving = Input.GetAxis("Vertical") * -playerMovingSpeed;
         strafe = Input.GetAxis("Horizontal") * -strafeSpeed;
@@ -43,6 +43,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         playerRigidbody.AddRelativeForce(-strafe * runSpeed, 0, -moving * runSpeed);
-        // playerRigidbody.velocity = Vector3.ClampMagnitude(playerRigidbody.velocity, 2 * runSpeed);
+        playerRigidbody.velocity = Vector3.ClampMagnitude(playerRigidbody.velocity, 2 * runSpeed);
     }
 }
