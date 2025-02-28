@@ -12,9 +12,10 @@ public class PressurePlateTakeMoney : MonoBehaviour
     
     public GameObject wallPrefab; // Reference to the wall prefab
     public Transform wallSpawnPosition; // Position where the wall will spawn (can be set in the inspector)
-
+    public bool activated;
     private void Start()
     {
+        activated = false;
         // Update the money display at the start
         UpdateMoneyDisplay();
     }
@@ -35,6 +36,7 @@ public class PressurePlateTakeMoney : MonoBehaviour
 
                 // Disable the pressure plate (make it disappear)
                 DisablePressurePlate();
+                activated = true;
             }
             else
             {
