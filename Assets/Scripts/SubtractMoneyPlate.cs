@@ -12,6 +12,8 @@ public class PressurePlateTakeMoney : MonoBehaviour
     
     public GameObject wallPrefab; // Reference to the wall prefab
     public Transform wallSpawnPosition; // Position where the wall will spawn (can be set in the inspector)
+    public GameObject anotherPrefab;
+    public Transform anotherPrefabSpawnPosition;
     public bool activated; 
     private void Start()
     {
