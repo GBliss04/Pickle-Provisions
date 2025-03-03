@@ -2449,7 +2449,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7068010207636771438, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
   m_PrefabInstance: {fileID: 2016810280}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &545481433
+--- !u!114 &545481439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2458,16 +2458,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 545481424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5fb66868d9ec2b4bb3a18be65422685, type: 3}
+  m_Script: {fileID: 11500000, guid: 9707d7887268551d083b92ab9254ccad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovingSpeed: 10
-  strafeSpeed: 5
-  cam: {fileID: 100859040}
-  horizontalSensitivity: 2
-  verticalSensitivity: 2
-  rotationLimit: 0
-  runMultiplier: 2
+  moveSpeed: 5
+  lookSpeedX: 2
+  lookSpeedY: 2
+  playerCamera: {fileID: 100859043}
+  gravity: -9.8
+  jumpHeight: 2
 --- !u!1 &554648590
 GameObject:
   m_ObjectHideFlags: 0
@@ -7053,6 +7052,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2234485116478399292, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234485116478399292, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7068010207636771438, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -7102,8 +7109,8 @@ PrefabInstance:
       addedObject: {fileID: 100859043}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1492870044402508128, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 545481433}
+      insertIndex: -1
+      addedObject: {fileID: 545481439}
   m_SourcePrefab: {fileID: 100100000, guid: 03bd2ecefec37a957803a4646d050050, type: 3}
 --- !u!1 &2040872610
 GameObject:
