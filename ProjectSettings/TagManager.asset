@@ -8,6 +8,7 @@ TagManager:
   - Pickle
   - UpgradeDoor
   - Conveyor
+  - PressurePlate
   layers:
   - Default
   - TransparentFX

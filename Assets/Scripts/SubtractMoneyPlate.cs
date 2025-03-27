@@ -9,11 +9,9 @@ public class PressurePlateTakeMoney : MonoBehaviour
     public int moneyAmountRequired = 0; // The amount of money required to activate the plate
     public int moneyAmountToTake = -50; // Amount of money to deduct when the plate is triggered
     private int totalMoney = 0; // Initial total money (can be linked to a player system)
-    
+
     public GameObject wallPrefab; // Reference to the wall prefab
     public Transform wallSpawnPosition; // Position where the wall will spawn (can be set in the inspector)
-    public GameObject anotherPrefab;
-    public Transform anotherPrefabSpawnPosition;
     public bool activated; 
     private void Start()
     {
@@ -35,9 +33,6 @@ public class PressurePlateTakeMoney : MonoBehaviour
 
                 // Summon the wall after purchasing
                 SummonWall();
-
-                // Summon the other prefab (can be any object, like a key, door, etc.)
-                SummonAnotherPrefab();
 
                 // Disable the pressure plate (make it disappear)
                 DisablePressurePlate();
@@ -70,19 +65,6 @@ public class PressurePlateTakeMoney : MonoBehaviour
         else
         {
             Debug.LogWarning("Wall prefab or spawn position is not set.");
-        }
-    }
-
-    private void SummonAnotherPrefab()
-    {
-        // Instantiate the additional prefab at the designated spawn position
-        if (anotherPrefab != null && anotherPrefabSpawnPosition != null)
-        {
-            Instantiate(anotherPrefab, anotherPrefabSpawnPosition.position, anotherPrefabSpawnPosition.rotation);
-        }
-        else
-        {
-            Debug.LogWarning("Additional prefab or spawn position is not set.");
         }
     }
 
