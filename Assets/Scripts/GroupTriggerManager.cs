@@ -17,11 +17,12 @@ public class GroupTriggerManager : MonoBehaviour
         }
 
         // Ensure only the first group is active
-        for (int i = 0; i < triggerGroups.Count; i++)
+        SetGroupActive(triggerGroups[0], true);
+        Debug.Log($"Group 1 is Active");
+        for (int i = 1; i < triggerGroups.Count; i++)
         {
-            bool isActive = (i == 0);
-            SetGroupActive(triggerGroups[i], isActive);
-            Debug.Log($"Group {i + 1} is {(isActive ? "Active" : "Inactive")}");
+            SetGroupActive(triggerGroups[i], false);
+            Debug.Log($"Group {i + 1} is Inactive");
         }
     }
 
@@ -79,6 +80,7 @@ public class GroupTriggerManager : MonoBehaviour
         foreach (Transform child in group.transform)
         {
             child.gameObject.SetActive(isActive);
+            Debug.Log("Setting game object " + isActive);
         }
     }
 }
