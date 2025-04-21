@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3091863689786125636}
     m_Modifications:
+    - target: {fileID: 868818948751415826, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2754148935909624224, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
       propertyPath: m_Name
       value: Floating Text

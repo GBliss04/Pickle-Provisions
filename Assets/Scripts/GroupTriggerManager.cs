@@ -18,11 +18,11 @@ public class GroupTriggerManager : MonoBehaviour
 
         // Ensure only the first group is active
         SetGroupActive(triggerGroups[0], true);
-        Debug.Log($"Group 1 is Active");
+        // Debug.Log($"Group 1 is Active");
         for (int i = 1; i < triggerGroups.Count; i++)
         {
             SetGroupActive(triggerGroups[i], false);
-            Debug.Log($"Group {i + 1} is Inactive");
+            // Debug.Log($"Group {i + 1} is Inactive");
         }
     }
 
@@ -44,7 +44,6 @@ public class GroupTriggerManager : MonoBehaviour
         if (!triggeredObjects.Contains(trigger))
         {
             triggeredObjects.Add(trigger);
-            Debug.Log($"{trigger.name} triggered! {triggeredObjects.Count}/{currentGroup.transform.childCount} in Group {currentGroupIndex + 1}");
         }
 
         // Check if all objects in the current group have been triggered
@@ -56,7 +55,7 @@ public class GroupTriggerManager : MonoBehaviour
 
     private void MoveToNextGroup()
     {
-        Debug.Log($"Group {currentGroupIndex + 1} completed. Moving to the next group...");
+        // Debug.Log($"Group {currentGroupIndex + 1} completed. Moving to the next group...");
 
         // Disable current group
         SetGroupActive(triggerGroups[currentGroupIndex], false);
@@ -67,11 +66,11 @@ public class GroupTriggerManager : MonoBehaviour
         {
             currentGroupIndex++;
             SetGroupActive(triggerGroups[currentGroupIndex], true);
-            Debug.Log($"Group {currentGroupIndex + 1} is now active!");
+            // Debug.Log($"Group {currentGroupIndex + 1} is now active!");
         }
         else
         {
-            Debug.Log("All groups completed!");
+            // Debug.Log("All groups completed!");
         }
     }
 
@@ -80,7 +79,7 @@ public class GroupTriggerManager : MonoBehaviour
         foreach (Transform child in group.transform)
         {
             child.gameObject.SetActive(isActive);
-            Debug.Log("Setting game object " + isActive);
+            // Debug.Log("Setting game object " + isActive);
         }
     }
 }

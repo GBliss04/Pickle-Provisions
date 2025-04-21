@@ -20,7 +20,6 @@ public class MoneyUIUpdater : MonoBehaviour
         if (moneyText != null)
         {
             moneyText.text = "Money: $" + WalletManager.Instance.CurrentMoney;
-            Debug.Log("Updating Text");
         }
     }
 }
