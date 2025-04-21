@@ -47,14 +47,7 @@ public class MoneyObject : MonoBehaviour
         if (other.CompareTag("Collector")) // Check if the collector picks it up
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player"); // Find the player in the scene
-            if (player != null)
-            {
-                PlayerMoney playerMoney = player.GetComponent<PlayerMoney>();
-                if (playerMoney != null)
-                {
-                    playerMoney.AddMoney(moneyValue); // Add the upgraded money to the player
-                }
-            }
+            WalletManager.Instance.AddMoney(moneyValue);
 
             Destroy(gameObject); // Remove the money object after collection
         }

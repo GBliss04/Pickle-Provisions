@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: F1 Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4596129535550287513, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 852ab42632dc2946cae76147940f8f8d, type: 2}
     - target: {fileID: 4924957369717689572, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.79299
@@ -82,6 +86,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4924957369717689572, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366181355880007440, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 852ab42632dc2946cae76147940f8f8d, type: 2}
+    - target: {fileID: 7377096841100079457, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 852ab42632dc2946cae76147940f8f8d, type: 2}
+    - target: {fileID: 7377096841100079457, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7377096841100079457, guid: b89e0190ff7118ecd85fdc968ffdf0b6, type: 3}
