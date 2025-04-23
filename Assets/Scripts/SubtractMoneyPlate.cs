@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // For TextMeshPro
+using TMPro;
 
 public class PressurePlateTakeMoney : MonoBehaviour
-{
-    public TextMeshProUGUI moneyText; // Reference to the UI Text element
-    public int moneyAmountRequired = 0; // The amount of money required to activate the plate
-    public int moneyAmountToTake = -50; // Amount of money to deduct when the plate is triggered
-    private int totalMoney = 0; // Initial total money (can be linked to a player system)
-    
+{    
+    public string itemName = "Upgrade"; // Set this in the Inspector
+    public int moneyAmountRequired = 0; // Cost of the upgrade
     public GameObject wallPrefab; // Reference to the wall prefab
-    public Transform wallSpawnPosition; // Position where the wall will spawn (can be set in the inspector)
-
+    public bool activated; 
+    private GameObject floatingTextInstance;
     private void Start()
     {
-        // Update the money display at the start
-        UpdateMoneyDisplay();
+        // Get FloatingText script and assign the target
+        // FloatingText floatingText = GetComponent<FloatingText>();
+        FloatingText floatingText = GetComponentInChildren<FloatingText>();
+
+        if (floatingText != null)
+        {
+            floatingText.target = transform; // Make text follow this object
+            floatingText.SetText($"Buy: {itemName} - ${moneyAmountRequired}"); // Display item name and cost
+            Debug.Log("floating text isn't null");
+        }
+         activated = false;
+        if (wallPrefab)
+        {
+            wallPrefab.SetActive(false);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,17 +35,24 @@ public class PressurePlateTakeMoney : MonoBehaviour
         // Check if the player stepped on the pressure plate
         if (other.CompareTag("Player"))
         {
+            GetComponent<Renderer>().material.color = Color.green; // Change color when activated
+            Debug.Log("Trying to spend money");
             // Check if the player has enough money
-            if (totalMoney >= moneyAmountRequired)
+            if (WalletManager.Instance.SpendMoney(moneyAmountRequired))
             {
-                // Deduct money and update UI
-                DeductMoney();
-
+                Debug.Log("Spent some money");
+                FindObjectOfType<GroupTriggerManager>().OnTriggerActivated(gameObject);
                 // Summon the wall after purchasing
-                SummonWall();
+                // SummonWall();
+                if (wallPrefab)
+                {
+                    wallPrefab.SetActive(true);
+                }
 
                 // Disable the pressure plate (make it disappear)
                 DisablePressurePlate();
+                DisableText();
+                activated = true;
             }
             else
             {
@@ -43,29 +61,6 @@ public class PressurePlateTakeMoney : MonoBehaviour
             }
         }
     }
-
-    private void DeductMoney()
-    {
-        // Subtract the specified amount of money from the player's total
-        totalMoney -= moneyAmountToTake;
-
-        // Update the UI with the new money value
-        UpdateMoneyDisplay();
-    }
-
-    private void SummonWall()
-    {
-        // Instantiate the wall prefab at the designated spawn position
-        if (wallPrefab != null && wallSpawnPosition != null)
-        {
-            Instantiate(wallPrefab, wallSpawnPosition.position, wallSpawnPosition.rotation);
-        }
-        else
-        {
-            Debug.LogWarning("Wall prefab or spawn position is not set.");
-        }
-    }
-
     private void DisablePressurePlate()
     {
         // Disable the pressure plate's collider so it can't be triggered again
@@ -79,9 +74,11 @@ public class PressurePlateTakeMoney : MonoBehaviour
         gameObject.SetActive(false); // Disables the entire object (can be re-enabled if needed).
     }
 
-    private void UpdateMoneyDisplay()
+    private void DisableText()
     {
-        // Update the TextMeshPro UI to show the current money value
-        moneyText.text = "Money: $" + totalMoney.ToString();
+        if (floatingTextInstance)
+        {
+            Destroy(floatingTextInstance);
+        }
     }
 }
