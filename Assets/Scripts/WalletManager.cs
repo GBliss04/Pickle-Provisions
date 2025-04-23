@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class WalletManager : MonoBehaviour
+public class WalletManager : Subject
 {
     public static WalletManager Instance;
 
@@ -25,7 +25,7 @@ public class WalletManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         CurrentMoney += amount;
-        Debug.Log("Got some money.");
+        NotifyObservers(WalletActions.AddMoney);
     }
 
     public bool SpendMoney(int amount)
@@ -33,12 +33,12 @@ public class WalletManager : MonoBehaviour
         if (CurrentMoney >= amount)
         {
             CurrentMoney -= amount;
-            Debug.Log("Spent some money.");
+            NotifyObservers(WalletActions.SubtractMoney);
             return true;
         }
         else
         {
-            Debug.Log("Not enough money!");
+            NotifyObservers(WalletActions.InsufficientFunds);
             return false;
         }
     }
