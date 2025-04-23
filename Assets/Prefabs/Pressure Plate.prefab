@@ -66,15 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064647023322005921, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4064647023322005921, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4064647023322005921, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4064647023322005921, guid: 19cdff91d76371734954fb4f00bf74d7, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -245,7 +245,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Upgrade
   moneyAmountRequired: 0
-  floatingTextPrefab: {fileID: 0}
   wallPrefab: {fileID: 0}
-  wallSpawnPosition: {fileID: 0}
   activated: 1
