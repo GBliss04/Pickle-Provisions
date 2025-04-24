@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyValue: 15
-  conveyorSpeed: 3
+  conveyorSpeed: 0
 --- !u!65 &-3899780682222302555
 BoxCollider:
   m_ObjectHideFlags: 0
