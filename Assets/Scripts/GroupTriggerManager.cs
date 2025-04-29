@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Needed for loading scenes
 
 public class GroupTriggerManager : MonoBehaviour
 {
@@ -16,19 +17,17 @@ public class GroupTriggerManager : MonoBehaviour
             return;
         }
 
-        // Ensure only the first group is active
+        // Only the first group is active at start
         SetGroupActive(triggerGroups[0], true);
-        // Debug.Log($"Group 1 is Active");
+
         for (int i = 1; i < triggerGroups.Count; i++)
         {
             SetGroupActive(triggerGroups[i], false);
-            // Debug.Log($"Group {i + 1} is Inactive");
         }
     }
 
     public void OnTriggerActivated(GameObject trigger)
     {
-        // Ensure we are in a valid group
         if (triggerGroups.Count == 0 || currentGroupIndex >= triggerGroups.Count) return;
 
         GameObject currentGroup = triggerGroups[currentGroupIndex];
@@ -55,22 +54,22 @@ public class GroupTriggerManager : MonoBehaviour
 
     private void MoveToNextGroup()
     {
-        // Debug.Log($"Group {currentGroupIndex + 1} completed. Moving to the next group...");
-
         // Disable current group
         SetGroupActive(triggerGroups[currentGroupIndex], false);
-        triggeredObjects.Clear(); // Reset for the next group
+        triggeredObjects.Clear(); // Reset triggered list
 
-        // Move to the next group if available
-        if (currentGroupIndex + 1 < triggerGroups.Count)
+        currentGroupIndex++;
+
+        if (currentGroupIndex < triggerGroups.Count)
         {
-            currentGroupIndex++;
+            // Activate the next group
             SetGroupActive(triggerGroups[currentGroupIndex], true);
-            // Debug.Log($"Group {currentGroupIndex + 1} is now active!");
         }
         else
         {
-            // Debug.Log("All groups completed!");
+            // No more groups - all completed!
+            Debug.Log("All groups completed! Loading Credits scene...");
+            SceneManager.LoadScene("Credits");
         }
     }
 
@@ -79,7 +78,6 @@ public class GroupTriggerManager : MonoBehaviour
         foreach (Transform child in group.transform)
         {
             child.gameObject.SetActive(isActive);
-            // Debug.Log("Setting game object " + isActive);
         }
     }
 }
