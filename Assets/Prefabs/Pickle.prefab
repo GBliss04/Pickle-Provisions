@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: -4970463594018922189}
   - component: {fileID: 6083507243126527804}
   - component: {fileID: 9200839005826751146}
-  - component: {fileID: -3899780682222302555}
   m_Layer: 0
   m_Name: Pickle
   m_TagString: Pickle
@@ -150,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a3e55957fed258f95743802cfd915f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Pickle
+  targetTag: Player
 --- !u!114 &9200839005826751146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,26 +162,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa13d14aa2076b278b96c4c46621e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyValue: 15
-  conveyorSpeed: 0
---- !u!65 &-3899780682222302555
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112359488685235230}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  value: 10

@@ -9,6 +9,7 @@ TagManager:
   - UpgradeDoor
   - Conveyor
   - PressurePlate
+  - Vat
   layers:
   - Default
   - TransparentFX
