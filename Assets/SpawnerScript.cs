@@ -2,27 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneySpawner : MonoBehaviour
+public class TimedSpawner : MonoBehaviour
 {
-    public GameObject moneyPrefab; // Assign the money object prefab
-    public Transform spawnPoint; // Assign the spawn location
-    public float spawnInterval = 10f; // Time in seconds
+    [Header("Spawn Settings")]
+    public GameObject objectToSpawn;       // Drag your prefab here
+    public float spawnDelay = 5f;          // Time between spawns
+    public bool startOnAwake = true;       // Optional toggle
 
-    private void Start()
+    private float timer;
+
+    void Start()
     {
-        StartCoroutine(SpawnMoney());
+        timer = spawnDelay;
+
+        if (!startOnAwake)
+        {
+            enabled = false; // Disable script if not auto-starting
+        }
     }
 
-    private IEnumerator SpawnMoney()
+    void Update()
     {
-        while (true) // Infinite loop to keep spawning
-        {
-            yield return new WaitForSeconds(spawnInterval); // Wait before spawning
+        timer -= Time.deltaTime;
 
-            if (moneyPrefab != null && spawnPoint != null)
-            {
-                Instantiate(moneyPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
+        if (timer <= 0f)
+        {
+            Spawn();
+            timer = spawnDelay;
+        }
+    }
+
+    public void StartSpawning()
+    {
+        enabled = true;
+        timer = spawnDelay;
+    }
+
+    public void StopSpawning()
+    {
+        enabled = false;
+    }
+
+    private void Spawn()
+    {
+        if (objectToSpawn != null)
+        {
+            Instantiate(objectToSpawn, transform.position, transform.rotation);
+        }
+        else
+        {
+            Debug.LogWarning("No object assigned to spawn.");
         }
     }
 }

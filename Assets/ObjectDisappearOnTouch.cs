@@ -19,7 +19,6 @@ public class ObjectDisappearOnTouch : MonoBehaviour
     }
 
     // If you're using triggers instead of regular colliders, you can use OnTriggerEnter instead:
-    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(targetTag))
@@ -27,5 +26,5 @@ public class ObjectDisappearOnTouch : MonoBehaviour
             Destroy(gameObject); // Destroys the object when it touches a trigger collider with the specified tag
         }
     }
-    */
+
 }
