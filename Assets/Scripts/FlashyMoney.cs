@@ -6,13 +6,9 @@ public class FlashyMoney : MonoBehaviour, IObserver
 {
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private Color addColor = Color.green;
-    [SerializeField] private Color subtractColor = Color.yellow;
-    [SerializeField] private Color insufficientColor = Color.red;
     [SerializeField] private float flashDuration = 0.3f;
 
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip insufficientFundsClip;
-    [SerializeField] private AudioClip spendMoneyClip;
     [SerializeField] private AudioClip gainMoneyClip;
     [SerializeField] private AudioSource audioSource;
 
@@ -41,16 +37,6 @@ public class FlashyMoney : MonoBehaviour, IObserver
                 StartCoroutine(FlashColor(addColor));
                 PlayGainMoneySound();
                 break;
-
-            case WalletActions.SubtractMoney:
-                StartCoroutine(FlashColor(subtractColor));
-                PlaySpendMoneySound();
-                break;
-
-            case WalletActions.InsufficientFunds:
-                StartCoroutine(FlashColor(insufficientColor));
-                PlayInsufficientFundsSound();
-                break;
         }
     }
 
@@ -62,22 +48,6 @@ public class FlashyMoney : MonoBehaviour, IObserver
         yield return new WaitForSeconds(flashDuration);
 
         moneyText.color = originalColor;
-    }
-
-    private void PlayInsufficientFundsSound()
-    {
-        if (audioSource != null && insufficientFundsClip != null)
-        {
-            audioSource.PlayOneShot(insufficientFundsClip);
-        }
-    }
-
-    private void PlaySpendMoneySound()
-    {
-        if (audioSource != null && spendMoneyClip != null)
-        {
-            audioSource.PlayOneShot(spendMoneyClip);
-        }
     }
 
     private void PlayGainMoneySound()

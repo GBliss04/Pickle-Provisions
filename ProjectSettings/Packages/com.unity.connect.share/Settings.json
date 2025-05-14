@@ -1,0 +1,26 @@
+{
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "firstTime",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "autoPublish",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "createDefaultBuildsFolder",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "buildOutputDirList",
+                "value": "{\"m_Value\":\"/home/25000752/Desktop/Create With Code/Performance Assessment DEMO/WebGL Builds/Pickle Provisions V1.4;/home/25000752/Desktop/Create With Code/Performance Assessment DEMO/WebGL Builds/Pickle Provisions V1.3;/home/25000752/Desktop/Create With Code/Performance Assessment DEMO/WebGL Builds/Pickle Provisions V1.2;/home/25000752/Desktop/Create With Code/Performance Assessment DEMO/WebGL Builds/Pickle Provisions V1.1;/home/25000752/Desktop/Create With Code/Performance Assessment DEMO/WebGL Builds/Pickle Provisions V1;;;;;\"}"
+            }
+        ]
+    }
+}
