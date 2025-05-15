@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 76b9885e9ab38192f8602c79ee6261bd, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
@@ -160,7 +160,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.WecksCorp.Pickle-Provisions
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -286,7 +287,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1bedf59a17347bf869ba4b8071df0621, type: 3}
+      m_Icon: {fileID: 2800000, guid: 76b9885e9ab38192f8602c79ee6261bd, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
